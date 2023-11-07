@@ -1,0 +1,24 @@
+// grpc的proto示例
+
+syntax = "proto3";
+option go_package = "grpc_demo/hellogrpc";
+package hellogrpc;
+
+service Greeter {
+  // 注册SayHello rpc调用
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  // 注册SayHelloStreamReply rpc调用
+  rpc SayHelloStreamReply (HelloRequestList) returns (stream HelloReply) {}
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloRequestList {
+  repeated HelloRequest message = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}
